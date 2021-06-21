@@ -3,8 +3,13 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+github:
+  api-url: https://api.github.com
+  token: ${GITHUB_API_TOKEN}
+application:
+  import-frequency: ${ISSUES_IMPORT_FREQUENCY:60000}
 
 
 
