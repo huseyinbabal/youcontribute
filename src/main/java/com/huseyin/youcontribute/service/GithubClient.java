@@ -38,7 +38,7 @@ public class GithubClient {
     }
 
     public GithubPullResponse[] listPullRequests(String owner, String repository) {
-        String pullRequestsUrl = String.format("%s/repos/%s/%s/pulls", this.githubProperties.getApiUrl(),
+        String pullRequestsUrl = String.format("%s/repos/%s/%s/pulls?state=closed", this.githubProperties.getApiUrl(),
             owner, repository);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization",  "token " + this.githubProperties.getToken());

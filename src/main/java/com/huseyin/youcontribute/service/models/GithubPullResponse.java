@@ -14,6 +14,8 @@ public class GithubPullResponse {
 
     private User user;
 
+    private String body;
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
