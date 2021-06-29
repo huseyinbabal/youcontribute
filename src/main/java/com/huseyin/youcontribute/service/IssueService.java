@@ -2,6 +2,7 @@ package com.huseyin.youcontribute.service;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import com.huseyin.youcontribute.models.Issue;
@@ -26,6 +27,11 @@ public class IssueService {
     public List<Issue> list(Integer repositoryId) {
         Repository repository = this.repositoryService.findById(repositoryId);
         return this.issueRepository.findByRepository(repository);
+    }
+
+    public Issue findRandomIssue() {
+        return this.issueRepository.findRandomIssue()
+            .orElseThrow(() -> new EntityNotFoundException("No issues found."));
     }
 
 }
