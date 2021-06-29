@@ -34,10 +34,10 @@ public class TrackChallengesScheduler {
                 Repository repository = issueChallenge.getIssue().getRepository();
                 Arrays.stream(this.githubClient
                     .listPullRequests(repository.getOrganization(), repository.getRepository()))
-                    .filter(pull -> "huseyinbabal".equals(pull.getUser().getLogin()) && "closed".equals(pull.getState()))
+                    .filter(pull -> "huseyinbabal".equals(pull.getUser().getLogin()) && pull.getBody().contains(String.format("Fixes #%d", issueChallenge.getIssue().getGithubIssueNumber())) && "closed".equals(pull.getState()))
                     .findFirst()
                     .ifPresent(pullResponse -> {
-                        System.out.println("Issue resolved!");
+                        this.issueChallengeService.updateStatus(issueChallenge.getId(), IssueChallengeStatus.COMPLETED);
                     });
             });
         log.info("Track challenge scheduler finished");
