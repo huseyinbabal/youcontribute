@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: youcontribute
+  labels:
+    app: youcontribute
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: youcontribute
+  template:
+    metadata:
+      labels:
+        app: youcontribute
+    spec:
+      containers:
+        - name: youcontribute
+          image: huseyinbabal/youcontribute:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://youcontribute-mysql.default:3306/youcontribute
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: db_password
+                  name: youcontribute
+            - name: GITHUB_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: github_api_token
+                  name: youcontribute
+            - name: ONE_SIGNAL_API_AUTH_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: one_signal_api_auth_key
+                  name: youcontribute
+            - name: ONE_SIGNAL_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  key: one_signal_app_id
+                  name: youcontribute
