@@ -11,17 +11,22 @@ import java.util.stream.Collectors;
 @Builder
 public class RepositoryResource {
 
+    private Integer id;
+
     private String name;
+
     private String organization;
 
     public static RepositoryResource createFor(Repository repository) {
         return RepositoryResource.builder()
-                .name(repository.getRepository())
-                .organization(repository.getOrganization())
-                .build();
+            .id(repository.getId())
+            .name(repository.getRepository())
+            .organization(repository.getOrganization())
+            .build();
     }
 
     public static List<RepositoryResource> createFor(List<Repository> repositories) {
         return repositories.stream().map(RepositoryResource::createFor).collect(Collectors.toList());
     }
+
 }

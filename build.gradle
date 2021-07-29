@@ -15,9 +15,12 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5'
+    implementation 'com.currencyfair:onesignal:1.0.15'
     runtimeOnly 'mysql:mysql-connector-java'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
 
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
@@ -26,6 +29,10 @@ dependencies {
     testImplementation "org.testcontainers:testcontainers:1.15.3"
     testImplementation "org.testcontainers:junit-jupiter:1.15.3"
     testImplementation "org.testcontainers:mysql:1.15.3"
+    testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock:3.0.3'
+    testImplementation 'de.mkammerer.wiremock-junit5:wiremock-junit5:1.1.0'
+
+
 }
 
 test {

@@ -3,25 +3,16 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+github:
+  api-url: https://api.github.com
+  token: ${GITHUB_API_TOKEN}
+application:
+  import-frequency: ${ISSUES_IMPORT_FREQUENCY:60000}
+  challenge-frequency: ${ISSUES_CHALLENGE_FREQUENCY:10000}
+  challenge-tracking-frequency: ${CHALLENGE_TRACKING_FREQUENCY:10000}
+  one-signal:
+    app-id: ${ONE_SIGNAL_APP_ID}
+    api-auth-key: ${ONE_SIGNAL_API_AUTH_KEY}
+    new-challenge-template-id: "4f90f941-cdd2-43a4-b932-6ecff434b355"
